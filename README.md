@@ -15,7 +15,8 @@ but when I bought a regular laptop I stopped using it because,
 well, it is too old, and its keyboard is too tiny to type
 comfortably.
 
-[![The Libretto, closed](./Damn%20Small%20Linux%20on%20a%20Libretto%2050CT_files/libretto_closed.thumb.jpg)](http://carlosfenollosa.com/computers/libretto/img/libretto_closed.jpg)
+[![The Libretto, closed](./img/libretto_closed.thumb.jpg)](img/libretto_closed.jpg)
+
 The Libretto, closed. It is a tiny machine, a wonderful piece of
 engineering
 About a month ago I found it inside a box at home, working
@@ -69,7 +70,8 @@ regular pen.
 For the full specifications, please refer to
 [the official leaflet](http://resource.toshiba-europe.com/europe/computers/flyers/libretto/libretto_50_e.pdf).
 
-[![The Libretto](./Damn%20Small%20Linux%20on%20a%20Libretto%2050CT_files/libretto.thumb.jpg)](http://carlosfenollosa.com/computers/libretto/img/libretto.jpg)
+[![The Libretto](img/libretto.thumb.jpg)](img/libretto.jpg)
+
 The setup I will be using: the Libretto, and a 3Com 16-bit PCMCIA
 Ethernet card
 ## Choosing a Linux distribution
@@ -194,10 +196,13 @@ You already have the adapter? Great! I bought
 which worked great and allowed me to manipulate the drive from my
 main computer.
 
-[![The 2.5inch IDE to USB adapter](./Damn%20Small%20Linux%20on%20a%20Libretto%2050CT_files/ide_adapter_box.thumb.jpg)](http://carlosfenollosa.com/computers/libretto/img/ide_adapter_box.jpg)
+[![The 2.5inch IDE to USB adapter](img/ide_adapter_box.thumb.jpg)](img/ide_adapter_box.jpg)
+
 This is the adapter in its box. It comes with an enclosure that I
 didn't use to avoid overheating, and a handy screwdriver.
-[![The 2.5inch IDE to USB adapter, close up](./Damn%20Small%20Linux%20on%20a%20Libretto%2050CT_files/ide_adapter.thumb.jpg)](http://carlosfenollosa.com/computers/libretto/img/ide_adapter.jpg)
+
+[![The 2.5inch IDE to USB adapter, close up](img/ide_adapter.thumb.jpg)](img/ide_adapter.jpg)
+
 A close up of the IDE adapter. Don't buy a SATA one by mistake!
 ### Using the drive in VirtualBox
 
@@ -269,9 +274,12 @@ you managed to get WPA wifi working!
 
 Here are some pictures, as a reference.
 
-[![The 3Com card](./Damn%20Small%20Linux%20on%20a%20Libretto%2050CT_files/3com.thumb.jpg)](http://carlosfenollosa.com/computers/libretto/img/3com.jpg)
+[![The 3Com card](img/3com.thumb.jpg)](img/3com.jpg)
+
 The 3Com card, front
-[![The 3Com card](./Damn%20Small%20Linux%20on%20a%20Libretto%2050CT_files/3com_back.thumb.jpg)](http://carlosfenollosa.com/computers/libretto/img/3com_back.jpg)
+
+[![The 3Com card](img/3com_back.thumb.jpg)](img/3com_back.jpg)
+
 The 3Com card, back. Note the "PC card" icon with the technical
 specs.
 The Knoppix core of DSL detected my Ethernet card, configured it
@@ -288,21 +296,25 @@ went ahead and probed the opl3sa2 driver. At first, it didn't work,
 because the I/O parameters on my card weren't the same than on that
 page.
 
-[![The BIOS of the Libretto](./Damn%20Small%20Linux%20on%20a%20Libretto%2050CT_files/bios.thumb.jpg)](http://carlosfenollosa.com/computers/libretto/img/bios.jpg)
+[![The BIOS of the Libretto](img/bios.thumb.jpg)](img/bios.jpg)
+
+
 This is my main BIOS configuration
-[![The BIOS of the Libretto, audio section](./Damn%20Small%20Linux%20on%20a%20Libretto%2050CT_files/bios_audio.thumb.jpg)](http://carlosfenollosa.com/computers/libretto/img/bios_audio.jpg)
+
+[![The BIOS of the Libretto, audio section](img/bios_audio.thumb.jpg)](img/bios_audio.jpg)
+
 A detail of the audio section.
 From top to bottom, the values correspond to the following module
 parameters
 
--   mss\_io
+-   mss_io
 -   not used
 -   not used
 -   irq
 -   dma
 -   dma2
 -   io
--   mpu\_io
+-   mpu_io
 
 This means that we will load the module with the following
 parameters. Remember to check your BIOS and use the correct ones,
@@ -423,21 +435,13 @@ if you have some contribution, for example, a command to make it
 run with another Ethernet card, or if you managed to make the ACPI
 work.
 
-[![The Libretto running X](./Damn%20Small%20Linux%20on%20a%20Libretto%2050CT_files/libretto_x.thumb.jpg)](http://carlosfenollosa.com/computers/libretto/img/libretto_x.jpg)
+[![The Libretto running X](img/libretto_x.thumb.jpg)](img/libretto_x.jpg)
+
 The Libretto running an X session
 Thanks for reading!
-
 
 * * * * *
 
 CC by-nc 2012, Carlos Fenollosa. Contact:
 [twitter](http://twitter.com/cfenollosa) or
-[mail](mailto:carlos.fenollosa@gmail.com). Last modified: Wed 12
-Dec 2012 05:05:24 CET
-
-[Back to the Computers section](http://carlosfenollosa.com/computers)
-
-![image](chrome-extension://nonjdcjchghhkdoolnlbekcfllmednbl/images/loading.gif)![image](http://carlosfenollosa.com/computers/libretto/img/libretto_closed.jpg)
-/body\>
-
-
+[mail](mailto:carlos.fenollosa@gmail.com). Last modified: Wed 12 Dec 2012 05:05:24 CET
