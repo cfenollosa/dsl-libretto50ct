@@ -15,7 +15,7 @@ but when I bought a regular laptop I stopped using it because,
 well, it is too old, and its keyboard is too tiny to type
 comfortably.
 
-[![The Libretto, closed](./img/libretto_closed.thumb.jpg)](img/libretto_closed.jpg)
+[![The Libretto, closed](./img/libretto_closed.thumb.jpg)](https://github.com/carlesfe/dsl-libretto50ct/raw/master/img/libretto_closed.jpg)
 
 The Libretto, closed. It is a tiny machine, a wonderful piece of
 engineering
@@ -70,7 +70,7 @@ regular pen.
 For the full specifications, please refer to
 [the official leaflet](http://resource.toshiba-europe.com/europe/computers/flyers/libretto/libretto_50_e.pdf).
 
-[![The Libretto](img/libretto.thumb.jpg)](img/libretto.jpg)
+[![The Libretto](img/libretto.thumb.jpg)](https://github.com/carlesfe/dsl-libretto50ct/raw/master/img/libretto.jpg)
 
 The setup I will be using: the Libretto, and a 3Com 16-bit PCMCIA
 Ethernet card
@@ -196,28 +196,29 @@ You already have the adapter? Great! I bought
 which worked great and allowed me to manipulate the drive from my
 main computer.
 
-[![The 2.5inch IDE to USB adapter](img/ide_adapter_box.thumb.jpg)](img/ide_adapter_box.jpg)
+[![The 2.5inch IDE to USB adapter](img/ide_adapter_box.thumb.jpg)](https://github.com/carlesfe/dsl-libretto50ct/raw/master/img/ide_adapter_box.jpg)
 
 This is the adapter in its box. It comes with an enclosure that I
 didn't use to avoid overheating, and a handy screwdriver.
 
-[![The 2.5inch IDE to USB adapter, close up](img/ide_adapter.thumb.jpg)](img/ide_adapter.jpg)
+[![The 2.5inch IDE to USB adapter, close up](img/ide_adapter.thumb.jpg)](https://github.com/carlesfe/dsl-libretto50ct/raw/master/img/ide_adapter.jpg)
 
 A close up of the IDE adapter. Don't buy a SATA one by mistake!
+
 ### Using the drive in VirtualBox
 
 As stated before, we will use VirtualBox to make DSL think it is
 running on a real machine, and that the—now USB— hard drive is the
 main drive of the VM. Turns out that using a physical disk on
 VirtualBox isn't easy to find, but it only takes a command.
-**Please make sure that your Linux has detected the USB drive as /dev/sdb before proceeding or you might lose data on the wrong disk!**
+**Please make sure that your Linux has detected the USB drive as `/dev/sdb` before proceeding or you might lose data on the wrong disk!**
 If in case, use Disk Utility or check dmesg.
 
     VBoxManage internalcommands createrawvmdk -filename disk.vmdk -rawdisk /dev/sdb
                                                                            ^^^^^^^^  <-- check this
 
 The command above will create a file named disk.vmdk, which is a
-short plaintext file which references to /dev/sdb. You can now add
+short plaintext file which references to `/dev/sdb`. You can now add
 it to your VM using the normal VirtualBox Appliance Manager
 
 ### Partitioning
@@ -230,9 +231,9 @@ used for the Libretto's hardware Hibernate feature. I followed his
 partition table suggestions completely. Just in case his page is
 down, do this:
 
--   /dev/hda1 738.0 MB, ext2 (ext3 is slower, but more secure),
-    mounted as /
--   /dev/hda2 40.3 MB, swap
+-   `/dev/hda1` 738.0 MB, `ext2` (ext3 is slower, but more secure),
+    mounted as `/`
+-   `/dev/hda2` 40.3 MB, `swap`
 -   A remaining free space of 37.2 MB. Don't worry if the figure is
     slightly higher or lower due to rounding.
 
@@ -259,7 +260,7 @@ order to install, I have adapted the
 Follow the setup assistant from there. I chose Grub instead of LILO
 for the bootloader, and it worked. The network also works out of
 the box, so I didn't need to apply any modifications in
-/etc/default/pcmcia as stated in David's tutorial.
+`/etc/default/pcmcia` as stated in David's tutorial.
 
 Now disconnect the USB adapter, remove the disk, put it back in the
 Libretto, and boot. You should be prompted with either the console
@@ -274,11 +275,11 @@ you managed to get WPA wifi working!
 
 Here are some pictures, as a reference.
 
-[![The 3Com card](img/3com.thumb.jpg)](img/3com.jpg)
+[![The 3Com card](img/3com.thumb.jpg)](https://github.com/carlesfe/dsl-libretto50ct/raw/master/img/3com.jpg)
 
 The 3Com card, front
 
-[![The 3Com card](img/3com_back.thumb.jpg)](img/3com_back.jpg)
+[![The 3Com card](img/3com_back.thumb.jpg)](https://github.com/carlesfe/dsl-libretto50ct/raw/master/img/3com_back.jpg)
 
 The 3Com card, back. Note the "PC card" icon with the technical
 specs.
@@ -292,16 +293,16 @@ the hell I suffered with the Debian setup some years ago.
 [This other tutorial](http://ta.twi.tudelft.nl/DV/Staff/Lemmens/libretto70ct.html)
 points out some tricks to use all of the Libretto's capabilities. I
 didn't try most of them, but since I couldn't play any music, I
-went ahead and probed the opl3sa2 driver. At first, it didn't work,
+went ahead and probed the `opl3sa2` driver. At first, it didn't work,
 because the I/O parameters on my card weren't the same than on that
 page.
 
-[![The BIOS of the Libretto](img/bios.thumb.jpg)](img/bios.jpg)
+[![The BIOS of the Libretto](https://github.com/carlesfe/dsl-libretto50ct/raw/master/img/bios.thumb.jpg)](img/bios.jpg)
 
 
 This is my main BIOS configuration
 
-[![The BIOS of the Libretto, audio section](img/bios_audio.thumb.jpg)](img/bios_audio.jpg)
+[![The BIOS of the Libretto, audio section](https://github.com/carlesfe/dsl-libretto50ct/raw/master/img/bios_audio.thumb.jpg)](img/bios_audio.jpg)
 
 A detail of the audio section.
 From top to bottom, the values correspond to the following module
@@ -326,8 +327,8 @@ or modprobe will fail
 
 Finally, the Pentium 75 CPU is able to play most mp3 files, but you
 will need to compile your own [mpg123](http://www.mpg123.de/). DSL
-comes with mpg321, but the audio isn't fluid and for some reason
-only mpg123 is able to decode mp3 in realtime. Running it from a
+comes with `mpg321`, but the audio isn't fluid and for some reason
+only `mpg123` is able to decode mp3 in realtime. Running it from a
 console instead of an X session also helps, though the main
 bottleneck is the CPU, not the RAM
 
@@ -343,18 +344,18 @@ use it. If you feel strong enough, use the same Virtual Machine
 that you used for the DSL install and recompile it there, with the
 power of a current computer.
 
-The toshiba kernel module loads correctly (/proc/toshiba), but not
-toshiba\_acpi (/dev/toshiba). Not a big deal for me, but if you
+The `toshiba` kernel module loads correctly (`/proc/toshiba`), but not
+`toshiba_acpi` (`/dev/toshiba`). Not a big deal for me, but if you
 managed to get it working without recompiling the Knoppix kernel,
 please let me know.
 
 The Libretto does some power management by hardware (screen
 blanking, hibernation), and this is enough for me. However, to get
 the system to actually power off after a shutdown, edit the
-/boot/grub/menu.lst and change the parameter noapm to apm=on
-apm=power-off
+`/boot/grub/menu.lst` and change the parameter `noapm` to `apm=on`
+`apm=power-off`
 
-torsmo, DSL's dashboard, usually manages to get my battery status,
+`torsmo`, DSL's dashboard, usually manages to get my battery status,
 but I didn't investigate further.
 
 ## Performance tricks
@@ -362,15 +363,15 @@ but I didn't investigate further.
 Here are some generic tips on how to save some RAM and CPU cycles
 
 -   **Enable DMA** - For some reason, DSL disables DMA by default.
-    To enable it, edit the Grub config file /boot/grub/menu.lst and
-    change the boot parameter nodma for dma. You will then see a boot
-    message saying that DMA has been enabled for /dev/hda
--   **Disable ttys** - Edit /etc/inittab and disable all consoles
-    but one. Instead, run a GNU screen session to get terminal
+    To enable it, edit the Grub config file `/boot/grub/menu.lst` and
+    change the boot parameter `nodma` for `dma`. You will then see a boot
+    message saying that DMA has been enabled for `/dev/hda`
+-   **Disable ttys** - Edit `/etc/inittab` and disable all consoles
+    but one. Instead, run a GNU `screen` session to get terminal
     multiplexing.
 -   **No X** - Disable the automatic X session that is launched on
-    login. You might need to edit the .bashrc or the .bash\_profile
-    files. Comment out the startx command.
+    login. You might need to edit the `.bashrc` or the `.bash_profile`
+    files. Comment out the `startx` command.
 -   **GNU tools** - With those bytes we saved, use the DSL menu
     option "Upgrade to GNU tools" to replace the very basic BusyBox
     shell with the regular GNU tools.
@@ -385,7 +386,7 @@ Not bad, right? 3 MB of RAM on boot and a full functioning X taking
 only 7 MB more. That leaves a whooping 14 MB for applications!
 
 As the pointing device is not that great, I usually run a single
-tty with a screen session for terminal multiplexing, and do most of
+tty with a `screen` session for terminal multiplexing, and do most of
 my work on the terminal. X is only needed for viewing PDFs or
 images, and that's a perfecly suitable task for that computer.
 
@@ -435,13 +436,14 @@ if you have some contribution, for example, a command to make it
 run with another Ethernet card, or if you managed to make the ACPI
 work.
 
-[![The Libretto running X](img/libretto_x.thumb.jpg)](img/libretto_x.jpg)
+[![The Libretto running X](img/libretto_x.thumb.jpg)](https://github.com/carlesfe/dsl-libretto50ct/raw/master/img/libretto_x.jpg)
 
 The Libretto running an X session
+
 Thanks for reading!
 
 * * * * *
 
 CC by-nc 2012, Carlos Fenollosa. Contact:
 [twitter](http://twitter.com/cfenollosa) or
-[mail](mailto:carlos.fenollosa@gmail.com). Last modified: Wed 12 Dec 2012 05:05:24 CET
+[mail](mailto:carlos.fenollosa@gmail.com)
