@@ -1,288 +1,443 @@
-# Tuning an Apple Extended Keyboard II
+# Damn Small Linux on a Libretto 50CT
 
-As a person who spends at least eight hours, five days a week in
-front of a computer, choosing the correct keyboard is not an easy
-task. Your hands spend about eight hours a day touching and typing
-on it. Probably, while you are thinking, your fingers fiddle with
-the keys without pressing them. The office's background noise is
-those of keys typing. We could say that at least two of your senses
-highly notice your keyboard for a huge part of your life.
+Some years ago a friend from college got into his hands a series of
+[Toshiba Libretto 50CT](http://resource.toshiba-europe.com/europe/computers/flyers/libretto/libretto_50_e.pdf).
+They all came with Windows 95 pre installed, and we wiped them out
+and installed Debian with a 2.2 kernel, with much pain because of
+the unsupported disk drive. I remember it being so difficult that I
+don't even want to write about it. But it booted and was able to
+run Vim, Links, and connect to the internet. Enough for a
+network-enabled typewriter.
 
-Most people work with cheap 20€ keyboards, but for those
-interested,
-[there is a huge gamma of keys](http://www.daskeyboard.com/blog/?page_id=1458)
-and keyboards.
+I got
+[Richard Stallman to sign mine](http://weblog.topopardo.com/?p=1017),
+but when I bought a regular laptop I stopped using it because,
+well, it is too old, and its keyboard is too tiny to type
+comfortably.
 
-I have been following forums and pages about mechanical keyboards
-for some time. However, it was Steve Losh's
-[A Modern Space Cadet](http://stevelosh.com/blog/2012/10/a-modern-space-cadet/)
-which finally convinced me that I needed a better keyboard. To
-decide on one, however, is a path full of enlightenment, reading
-about key switches, historical keyboards, highly biased commenters,
-and the utmost fear of spending 400€ on an device you won't like
-for some reason.
+[![The Libretto, closed](./Damn%20Small%20Linux%20on%20a%20Libretto%2050CT_files/libretto_closed.thumb.jpg)](http://carlosfenollosa.com/computers/libretto/img/libretto_closed.jpg)
+The Libretto, closed. It is a tiny machine, a wonderful piece of
+engineering
+About a month ago I found it inside a box at home, working
+perfectly, with a battery life of one hour—which is incredible for
+a 12+ year old machine— and
+[DR-DOS](http://en.wikipedia.org/wiki/DR-DOS) installed. I can't
+remember why I did that, but
+[Golden Axe](http://en.wikipedia.org/wiki/Golden_Axe) was also
+installed, so there's a hint.
 
-I was just about to buy a Topre 104 when I thought I should give
-myself more time before paying that much. After all, what if I were
-to buy one and decided it just didn't feel right?
+I decided to install a modern Linux and, at least, store it on a
+working condition to give some justice to Stallman's signature.
 
-## A 20-year-old keyboard, the Apple Extended II
+There are some tutorials available on the net, but none of them
+covered 100% of the hardware support for my machine. Most of them
+are also outdated, and refer to distributions that don't exist,
+don't have any support or are about unusable nowadays. However, I
+took many hints from those tutorials, and I will reference them
+accordingly.
 
-After about a month of reading on forums,
-[this article from Thomas Brand](http://eggfreckles.net/notes/apples-greatest-keyboard/)
-and
-[a podcast with John Gruber and Dan Benjamin](http://thetalkshow.net/#20)
-brought this 20-year-old keyboard to my attention. It was highly
-praised, seemed to be very robust, and had Apple's 'command' and
-'alt' keys.
+## Hardware
 
-[![The Keyboard](./Tuning%20an%20Apple%20Extended%20Keyboard%20II_files/2452372207_cf363ab2a4_z.jpg)](http://www.flickr.com/photos/gruber/2452372207/ "The Keyboard by gruber, on Flickr")
-There are usually some for sale on Ebay, and I needed a really
-cheap one, since the shipping to Spain would account for at least
-50€. Furthermore, that keyboard also needs an ADB cable and the
-Griffin Imate to convert ADB to USB. Plus their shipping, too. The
-total could easily account for 100 Eur or maybe more, for a really
-old device.
+This laptop has a 75 MHz —actually, mine reports 74 MHz— with
+**24** MB of RAM, which is an upgrade from the original 16 MB which
+are usually bundled. The screen is 640x480, and if you choose a
+higher resolution, instead of scaling the image, it only displays
+the upper-leftmost 640x480 pixels. This usually means that you'll
+miss the bottom menu of the X windows.
 
-Apparently there's another factor to take into account. There are
-at least two different models, a good one, with Alps switches, and
-a not-so-good one, with Mitsumi switches. To make matters worse,
-there is no clear way to distinguish them. However, looking at the
-label can help. Here are the labels of Apple keyboards with Alps
-switches.
+The mouse device is emulated as a PS/2, and physically is a
+"clitoris"-like pointing device. You know what I mean. It is not as
+bad as modern clitoris pointing devices, but not good at all.
+Working with the X windows is a pain in the neck because of the
+location of the mouse and buttons, as clicking on a button makes
+the whole screen move on its hinges. Next to the mouse there is a
+speaker which is similar in quality to those of a modern
+smartphone.
 
-![AEKII with Alps switches](./Tuning%20an%20Apple%20Extended%20Keyboard%20II_files/aekii-alps1.jpg)
-![AEKII with Alps switches](./Tuning%20an%20Apple%20Extended%20Keyboard%20II_files/aekii-alps2.jpg)
-You should look for the "Made in the USA" and the bar code ending
-in M3012. My advice is to always ask the seller for confirmation,
-it is a matter of removing one keycap and
-[looking for the 'ALPS' label](http://imgur.com/a/elAFF#2) on the
-top of the key switch.
+This device doesn't have any extension port other than a dock
+connector, for a dock I don't have, and a 16-bit PCMCIA slot, which
+you will need for the Ethernet. It doesn't have a COM port or
+anything like that, which is understandable, given the size of the
+case.
 
-## The vanilla AEKII
+It does have an Infrared device, which is quite slow and useless,
+but for its time it was as good as wireless could get. The other
+holes correspond to the power adapter and the RESET button next to
+the PCMCIA, big enough to be able to reset the laptop with a
+regular pen.
 
-When the keyboard finally arrived, I tried to type on it, and
-unfortunately I didn't like its sound at all. After a month reading
-about clicky keyboards, watching Youtube videos and remembering an
-IBM Model M I had at college for some time, the AEKII had muffled,
-plain, *boring* keystrokes.
+For the full specifications, please refer to
+[the official leaflet](http://resource.toshiba-europe.com/europe/computers/flyers/libretto/libretto_50_e.pdf).
 
-Here's an audio recording what I mean for 'click' (first sound) and
-'clock' (second sound)
+[![The Libretto](./Damn%20Small%20Linux%20on%20a%20Libretto%2050CT_files/libretto.thumb.jpg)](http://carlosfenollosa.com/computers/libretto/img/libretto.jpg)
+The setup I will be using: the Libretto, and a 3Com 16-bit PCMCIA
+Ethernet card
+## Choosing a Linux distribution
 
-Your browser does not support the <audio\> tag, please
-[download the mp3 file manually.](http://carlosfenollosa.com/computers/keyboard/click.mp3)
-It is also worth mentioning that the Caps Lock key is a two-step
-button. That would have been amazing for a Caps Lock key, but since
-I use Ctrl instead, that would defeat its purpose.
+I wanted to find some modern, low-demanding software, not
+unsupported versions of Debian or RedHat. As you might have
+expected by this page's title, I chose
+[Damn Small Linux](http://www.damnsmalllinux.org/) (DSL).
 
-Now there are two options: stick with it, as is, or open the
-keyboard and see that could be done. Since I had opened and
-repaired my laptop, my old Gameboy, and almost every object that
-had fallen into my hands, why not a keyboard? I might learn
-something as a collateral.
+I was very lucky to find that my machine had been upgraded to 24 MB
+of RAM. Apparently, even low-end distros have difficulties booting
+a regular kernel with 16 MB. I didn't want to tune or recompile the
+kernel on a 75-MHz machine, so I had to do some tricks.
 
-## The mysterious keyboard tune
+In order to decide on a distro, I tried to set some goals up:
 
-How on Earth does a keyboard make a clicky sound when a key is
-pressed? Reddit user
-[ripster55](http://www.reddit.com/user/ripster55) helped me a lot
-with both his pictures and his comments
+1.  Discard modern distributions which require at least 256 MB of
+    RAM. In fact, discard anything that doesn't work with 24 MB of RAM
+2.  Try to avoid old versions of current distros (i.e. Debian
+    Woody) because the ISOs and the packages might not be mirrored
+    anymore and are difficult to be found.
+3.  Use a distro which self-configures kernel modules on boot,
+    because I will be installing from a Virtual Machine and the
+    hardware will change between reboots. Recompiling the kernel is
+    totally out of the picture.
+4.  Kernel 2.4 if possible, to make both the audio and the Ethernet
+    work
+5.  As easy to configure as possible. I want to finish this in a
+    few hours...
 
-[This animation](http://i.imgur.com/upQWT.gif) depicts how the
-sound is produced. It seems to happen when the rightmost leaf hits
-the plastic walls. However, the AEKII has
-[this kind of nonclicky leaves](http://imgur.com/a/elAFF#7) which
-stay fixed in place and don't hit the plastic enclosure back.
+I found myself with these contenders,
+[Damn Small Linux](http://www.damnsmalllinux.org/),
+[Puppy Linux](http://puppylinux.org/) and
+[Tiny Core Linux](http://distro.ibiblio.org/tinycorelinux/welcome.html).
 
-![the AEKII leaves](./Tuning%20an%20Apple%20Extended%20Keyboard%20II_files/DUxIF.jpg)
-Just as I was starting to think that the AEKII keys would never
-click, I noticed that some of the keys produced a very light click,
-in comparison to the silent majority. This was a very subtle hint:
-the home row keys and the most used consonants were the ones which
-clicked the most. Could it be that the AEKII isn't meant to be
-clicky after all, and that sound was actually caused by years of
-usage?
+DSL was the chosen one for many reasons. First, the default
+software choice is excellent. The installation seemed the easiest
+of the three, and—very important—worked flawlessly inside
+VirtualBox. The documentation is very extensive and, as a slightly
+old distro, there are lots of manuals and forum posts with
+solutions to common problems.
 
-## Opening the black Alps switches
+There is also the fact that DSL is based on Knoppix, so it detected
+my hardware perfectly, didn't have to tweak the PCMCIA, and only
+had to configure the audio manually because the I/O ports were not
+the standard ones. This was a huge aid for me. PCMCIA Internet
+working out of the box is something I hadn't even imagined to
+have.
 
-[This guide](http://imgur.com/a/elAFF) explains how to open Alps
-switches, and more importantly, how to assemble them back. Please
-note, the black plastic part doesn't seem to be reversible, so
-remember which way was it facing when you remove it.
+However, the decision also came with a few drawbacks. DSL has its
+own package manager, which only works inside X. apt-get can be
+enabled, but it might break packages already installed with MyDSL.
+Furthermore, those packages tend to disappear on a reboot. I'm
+still unsure on whether to use apt-get with MyDSL. The ACPI doesn't
+work, but I don't know whether it's the kernel or the Libretto's
+fault.
 
-Once I had some keys fully disassembled, it was time to debug their
-tune. Why was there a difference between the clicky C and the dull
-F15? There must be something different on the inside.
+My biggest fear, however, is that most of the packages are old and
+might have security issues. However, as this will not be my main
+machine, and it won't run a browser with JavaScript enabled, I'm
+not very worried.
 
-Here's the reasoning: Originally, the keys didn't click. After 20
-years, the most used ones do. The clicking sound is produced by a
-metal leaf hitting a plastic. The AEKII leaves have legs which make
-them stay in place. We can conclude that normal use has made some
-of those leaves to wear off, so they move inside the switch and
-click.
+**Why didn't I choose Tiny Core?** because it didn't boot on a
+VirtualBox machine with 24 MB of RAM. It would have been my first
+choice, because it is better maintained than DSL. A real pity.
 
-The Extended II leaves have four legs, but they can be disabled
-easily. On silent keys, the leaf was stuck in place by the force of
-the legs.
-**Slightly angling them, from the original 90 degrees to about 45-60 degrees from the base, made them loose and allowed the leaf to freely slide in and out of the keyswitch.**
+**And what about Puppy?** The LiveCD is great but the installation
+instructions were too complicated for me. I really didn't want to
+spend that much time configuring everything. It is maybe too modern
+(based on Slackware 13.37 with Kernel 3.1.10) and I doubt the
+Libretto could have handled its kernel.
 
-That was enough. Slightly bending the four legs of every leaf made
-the reconstructed key produce a clicking sound. One can adjust the
-exact tune of every key by means of this angle. The looser the
-leaf, the clickier the key.
+## Installation
 
-## Aftermath
+*Please note: I will assume that you have some experience with Linux, partitioning, and installing stuff from a console.*
 
-What's the point of making an AEKII artificially old and worn?
+### Strategy
 
-The good news is, the process is reversible. Just angle the leaves'
-legs back to 90 degrees and they will stay in place and produce a
-muted sound again.
+There are two alternatives, use floppy disks or physically remove
+the drive and set up a VM. Years ago, I went the first path,
+because I had the floppy disk drive. Fortunately, I don't have it
+anymore, and I found
+[an awesome tutorial](http://davissharonforest.tripod.com/DebianLinux31onToshibaLibretto50.htm)
+which suggested to physically remove the drive from the Libretto,
+attach it to a 2.5" IDE to USB adaptor, and install the system from
+another computer. Check out his pictures for details on how to
+remove the drive. My machine is in a quite horrible condition
+(broken hinges, cracks all over the case, stuck screws) and I had
+to break some plastics and metal parts to access the drive, but
+nothing serious.
 
-I hope this little hack can be useful for people who would like to
-generate an 'old keyboard' feel on their new or well-conserved
-AEKII, and also for those who don't like the chirp of their old
-keyboard and would like to restore its original sound. It might
-also be applied to other mechanical keyboards, not only the AEKII.
+So, we will use another Linux computer, which you probably already
+have, and set up a virtual machine inside VirtualBox. Then, we will
+remove the Libretto's physical HDD and attach it via USB to your
+computer, using an adapter. The DSL CD image and the new /dev/sd
+will be mapped inside the VM.
 
-As a last step to restore an old keyboard, it seems that there is a
-way to whiten a yellowed plastic, using a simple peroxide-oxy
-mixture, called [retr0bright](http://retr0bright.wikispaces.com/).
-I am planning to use it sometime soon.
+This way we can boot and install from a CD, instead of doing
+netinsts with the Debian Woody diskettes, as you will read on many
+other websites. It is the fastest and painless way, and if you
+don't have the floppy drive, it is the only way.
 
-*Update:* I used retr0bright and it is as magic as you can read on
-the wiki. Actually, I bought a bottled product which was 6%
-peroxide with oxy, advertised as a regular cleaner, and it did the
-trick.
+If you have the floppy drive and are wondering if it is worth to
+spend 6 € and wait 10 days for delivery, go ahead! Walk the
+difficult path, install DOS, start a Linux setup from DOS, try to
+make the floppy disk work, then install from diskettes with a
+crappy kernel, fight with the PCMCIA driver until you are able to
+use the network, and install from the net. And, should the
+installation fail, start OVER AGAIN! When this happens, please send
+me an email so that I can pretend that I sympathize with you but
+actually laugh at your misery.
 
-## Bonus: Caps Lock and other custom configurations
+Yes, it is a joke. Talking seriously, I am just trying to warn you.
+I tried that, I failed, then I succeeded, and not even in my
+success I want even the worst of my enemies going that path. Pay,
+wait, then come back and follow these instructions.
 
-I mentioned above that the Caps Lock key on the Extended II is
-actually a two-state button, and that's terrible for remapping into
-a Control key. Fortunately, it was very easy to change the key
-mechanism into another one, and make Caps Lock a regular key
-again.
+### Removing the hard drive
 
-Unfortunately, another problem arose. If it was a two-state key,
-how come it didn't get stuck in a KeyDown loop when pressed? It so
-happens that the hardware is set to produce both a KeyDown (press)
-and a KeyUp (release) event when the key is actually pressed, and
-then again a Down+Up when it is released. That way, setting the
-switch in the 'on' state actually simulates a regular CapsLock
-event as in other keyboards.
+You already have the adapter? Great! I bought
+[this one from dealextreme.com](http://www.dealextreme.com/p/2-5-inch-usb-2-0-ide-hdd-enclosure-9478?item=6)
+which worked great and allowed me to manipulate the drive from my
+main computer.
 
-This means that remapping Caps Lock to Control on the AEKII makes
-it produce a KeyDown and KeyUp very fast, when the key is pressed,
-and it makes it unusable as a modifier. Pressing Control-C would
-send the Operating System an Control(Down)-Control(Up)-C, which is
-interpreted as a regular C key press.
+[![The 2.5inch IDE to USB adapter](./Damn%20Small%20Linux%20on%20a%20Libretto%2050CT_files/ide_adapter_box.thumb.jpg)](http://carlosfenollosa.com/computers/libretto/img/ide_adapter_box.jpg)
+This is the adapter in its box. It comes with an enclosure that I
+didn't use to avoid overheating, and a handy screwdriver.
+[![The 2.5inch IDE to USB adapter, close up](./Damn%20Small%20Linux%20on%20a%20Libretto%2050CT_files/ide_adapter.thumb.jpg)](http://carlosfenollosa.com/computers/libretto/img/ide_adapter.jpg)
+A close up of the IDE adapter. Don't buy a SATA one by mistake!
+### Using the drive in VirtualBox
 
-Having used the incredible
-[KeyRemap4Macbook](http://pqrs.org/macosx/keyremap4macbook/) for
-some time, thanks to Losh's blog post, I hoped something could be
-done to reprogram the key. By
-[asking on the forum](https://groups.google.com/forum/#!topic/keyremap4macbook/YhVJoNP_j1U),
-Fumihiko was very nice and provided a couple solutions, the best
-one remapping Caps Lock to a virtual 'Control Lock'. That way, the
-Control Down+Up events are transformed into a single KeyDown
-event.
+As stated before, we will use VirtualBox to make DSL think it is
+running on a real machine, and that the—now USB— hard drive is the
+main drive of the VM. Turns out that using a physical disk on
+VirtualBox isn't easy to find, but it only takes a command.
+**Please make sure that your Linux has detected the USB drive as /dev/sdb before proceeding or you might lose data on the wrong disk!**
+If in case, use Disk Utility or check dmesg.
 
-Just in case the message is deleted, the solution is as follows:
+    VBoxManage internalcommands createrawvmdk -filename disk.vmdk -rawdisk /dev/sdb
+                                                                           ^^^^^^^^  <-- check this
 
-1.  Install both KeyRemap4Macbook and
-    [PCKeyboardHack](http://pqrs.org/macosx/keyremap4macbook/pckeyboardhack.html.en)
-2.  Using OSX's control panel, change Caps Lock to 'None'
-3.  Remap CapsLock on PCKH into 'PC Application' (code 110)
-4.  Use this item in your KR4M's private.xml
+The command above will create a file named disk.vmdk, which is a
+short plaintext file which references to /dev/sdb. You can now add
+it to your VM using the normal VirtualBox Appliance Manager
 
-    <item>
-        <name>CapsLock to ControlLock</name>
-        <appendix>For the AEKII</appendix>
-        <identifier>private.pc_application_to_controlLock</identifier>
-        <autogen>--KeyToKey-- KeyCode::PC_APPLICATION, KeyCode::VK_LOCK_CONTROL_L</autogen>
-        <autogen>--KeyToKey-- KeyCode::ESCAPE, KeyCode::ESCAPE, KeyCode::VK_LOCK_ALL_FORCE_OFF</autogen>
-    </item>
+### Partitioning
 
-### Remap the power button to sleep
+Use your main Linux box to partition the hard drive. Disk Utility
+works well, but I used cfdisk.
 
-My regular setup while at home is to work with my Macbook Air with
-the lid closed, connected to an external display, the AEKII and a
-mouse.
+The tutorial then notices that the last 32MB of the disk space are
+used for the Libretto's hardware Hibernate feature. I followed his
+partition table suggestions completely. Just in case his page is
+down, do this:
 
-The iMate maps the power button to the shutdown dialogue in OSX.
-Instead of that, we will remap that key to sleep. It is very
-convenient, as the laptop will wake when any key is pressed, and we
-can make it sleep easily.
+-   /dev/hda1 738.0 MB, ext2 (ext3 is slower, but more secure),
+    mounted as /
+-   /dev/hda2 40.3 MB, swap
+-   A remaining free space of 37.2 MB. Don't worry if the figure is
+    slightly higher or lower due to rounding.
 
-Maybe there is a better way to do it, but a quick method is to use
-PCKeyboardHack to remap the ADB power button to, say, F19. Then,
-using [Keyboard Maestro](http://www.keyboardmaestro.com/main/), map
-F19 to 'Sleep'. As simple as that.
+### Installing DSL
 
-*Update:* The same effect can be achieved with KeyRemap4Macbook.
-Add this to your private.xml:
+Now go ahead, and download the ISO image. I used the Release
+Candidate
+[4.11.rc1](http://distro.ibiblio.org/damnsmall/release_candidate/dsl-4.11.rc1.iso)
+and it didn't give me any problems
 
-    <item>
-        <name>Sleep key on the AEKII</name>
-        <identifier>private.sleep</identifier>
-        <autogen>
-              --KeyToKey--
-            KeyCode::F19,
-            KeyCode::VK_CONSUMERKEY_EJECT, ModifierFlag:: COMMAND_L | ModifierFlag:: OPTION_L
-        </autogen>
-    </item>
+Set up a new VM with 24 MB of RAM, use the ISO as the CD drive, and
+the disk.vmdk as the hard drive. Then boot.
 
-### Other remappings
+If everything goes well, you will be shown the desktop. Now, in
+order to install, I have adapted the
+[official instructions](http://www.damnsmalllinux.org/wiki/installing_to_the_hard_disk.html)
 
-I am very used to have the right option key next to the space on my
-MBA, which is handy because I write in Spanish using the US
-keyboard, and that right option lets me do accents and other latin
-letters. I had the idea of switching the right command and option
-keys to have option\_r closer to my thumb, but Unfortunately
-[the iMate sends all modifiers as 'left' keys](https://groups.google.com/forum/?fromgroups=#!topic/keyremap4macbook/iKvLuUM_0ow),
-i.e. right command is sent as left command, and there is nothing we
-can do about it.
+    sudo -s
+    swapoff -a
+    mkswap /dev/hda2 ## Considering that you followed the partition scheme in the tutorial
+    swapon /dev/hda2
+    dsl-hdinstall
 
-One last thing I'd like to mention is that KeyRemap4Macbook allows
-itself to store groups of settings in a profile, and that profile
-can be changed via the command line. This allows the use of
-[ControlPlane](http://www.controlplaneapp.com/) to detect the
-presence of the keyboard and automatically change KeyRemap's
-profile to take advantage of the double-capslock hack, and disable
-it when the keyboard is disconnected, since that setting breaks the
-MBA's regular capslock-to-control mapping.
+Follow the setup assistant from there. I chose Grub instead of LILO
+for the bootloader, and it worked. The network also works out of
+the box, so I didn't need to apply any modifications in
+/etc/default/pcmcia as stated in David's tutorial.
 
-## Conclusion
+Now disconnect the USB adapter, remove the disk, put it back in the
+Libretto, and boot. You should be prompted with either the console
+login or a X desktop, depending on your setup.
 
-I hope that my little experiment can help people to tune their
-keyboards to their liking, and what's more important, to
-disassemble and restore those which might be too old and worn for a
-comfortable use.
+## Network
 
-Personally, I think that the manual skills required to disassemble
-keyswitches are not high, especially for hardware people, but it
-needs some time and patience, since breaking a key mechanism might
-be fatal.
+I bought a PCMCIA 16-bit 5V 3Com Ethernet adapter. This Libretto
+only accepts Type II PCMCIA, so it is very difficult to find a
+Linux 2.4 compatible, WPA-capable wifi card. Please let me know if
+you managed to get WPA wifi working!
 
-As a final thought, remember that besides customizing your
-hardware, it is always a good idea to
-[remap your keys](http://stevelosh.com/blog/2012/10/a-modern-space-cadet/)
-to make your work more efficient.
+Here are some pictures, as a reference.
 
-Thanks for reading and hope you enjoyed it!
+[![The 3Com card](./Damn%20Small%20Linux%20on%20a%20Libretto%2050CT_files/3com.thumb.jpg)](http://carlosfenollosa.com/computers/libretto/img/3com.jpg)
+The 3Com card, front
+[![The 3Com card](./Damn%20Small%20Linux%20on%20a%20Libretto%2050CT_files/3com_back.thumb.jpg)](http://carlosfenollosa.com/computers/libretto/img/3com_back.jpg)
+The 3Com card, back. Note the "PC card" icon with the technical
+specs.
+The Knoppix core of DSL detected my Ethernet card, configured it
+with DHCP, and it talked instantly to my home router. Woohoo, it's
+on the Internet! I actually didn't need to do anything, compared to
+the hell I suffered with the Debian setup some years ago.
 
-![My setup](./Tuning%20an%20Apple%20Extended%20Keyboard%20II_files/setup.jpg)
+## Sound
+
+[This other tutorial](http://ta.twi.tudelft.nl/DV/Staff/Lemmens/libretto70ct.html)
+points out some tricks to use all of the Libretto's capabilities. I
+didn't try most of them, but since I couldn't play any music, I
+went ahead and probed the opl3sa2 driver. At first, it didn't work,
+because the I/O parameters on my card weren't the same than on that
+page.
+
+[![The BIOS of the Libretto](./Damn%20Small%20Linux%20on%20a%20Libretto%2050CT_files/bios.thumb.jpg)](http://carlosfenollosa.com/computers/libretto/img/bios.jpg)
+This is my main BIOS configuration
+[![The BIOS of the Libretto, audio section](./Damn%20Small%20Linux%20on%20a%20Libretto%2050CT_files/bios_audio.thumb.jpg)](http://carlosfenollosa.com/computers/libretto/img/bios_audio.jpg)
+A detail of the audio section.
+From top to bottom, the values correspond to the following module
+parameters
+
+-   mss\_io
+-   not used
+-   not used
+-   irq
+-   dma
+-   dma2
+-   io
+-   mpu\_io
+
+This means that we will load the module with the following
+parameters. Remember to check your BIOS and use the correct ones,
+or modprobe will fail
+
+    modprobe opl3sa2 io=0x370 mss_io=0x530 mpu_io=0x330 irq=7 dma=1 dma2=0
+
+*Note: to access the Libretto BIOS, reboot or reset it, and press <ESC\> during or just after the memory check*
+
+Finally, the Pentium 75 CPU is able to play most mp3 files, but you
+will need to compile your own [mpg123](http://www.mpg123.de/). DSL
+comes with mpg321, but the audio isn't fluid and for some reason
+only mpg123 is able to decode mp3 in realtime. Running it from a
+console instead of an X session also helps, though the main
+bottleneck is the CPU, not the RAM
+
+## ACPI/APM/Battery
+
+I only managed to get APM working. Playing with the Grub boot
+options there is no way to enable ACPI.
+
+[This blog post](http://www.notanon.com/programming/libretto-110ct-linux-acpi-tweaks-idlerunner-py-screen-blanker/2011/11/25/)
+has some pointers on how to install the Toshiba experimental ACPI
+driver, but as I didn't want to recompile the kernel, I couldn't
+use it. If you feel strong enough, use the same Virtual Machine
+that you used for the DSL install and recompile it there, with the
+power of a current computer.
+
+The toshiba kernel module loads correctly (/proc/toshiba), but not
+toshiba\_acpi (/dev/toshiba). Not a big deal for me, but if you
+managed to get it working without recompiling the Knoppix kernel,
+please let me know.
+
+The Libretto does some power management by hardware (screen
+blanking, hibernation), and this is enough for me. However, to get
+the system to actually power off after a shutdown, edit the
+/boot/grub/menu.lst and change the parameter noapm to apm=on
+apm=power-off
+
+torsmo, DSL's dashboard, usually manages to get my battery status,
+but I didn't investigate further.
+
+## Performance tricks
+
+Here are some generic tips on how to save some RAM and CPU cycles
+
+-   **Enable DMA** - For some reason, DSL disables DMA by default.
+    To enable it, edit the Grub config file /boot/grub/menu.lst and
+    change the boot parameter nodma for dma. You will then see a boot
+    message saying that DMA has been enabled for /dev/hda
+-   **Disable ttys** - Edit /etc/inittab and disable all consoles
+    but one. Instead, run a GNU screen session to get terminal
+    multiplexing.
+-   **No X** - Disable the automatic X session that is launched on
+    login. You might need to edit the .bashrc or the .bash\_profile
+    files. Comment out the startx command.
+-   **GNU tools** - With those bytes we saved, use the DSL menu
+    option "Upgrade to GNU tools" to replace the very basic BusyBox
+    shell with the regular GNU tools.
+
+Currently my setup takes the following resources:
+
+-   Used memory with X running: 10 MB
+-   Used memory without X running: 3 MB
+-   Used disk space: 290 MB
+
+Not bad, right? 3 MB of RAM on boot and a full functioning X taking
+only 7 MB more. That leaves a whooping 14 MB for applications!
+
+As the pointing device is not that great, I usually run a single
+tty with a screen session for terminal multiplexing, and do most of
+my work on the terminal. X is only needed for viewing PDFs or
+images, and that's a perfecly suitable task for that computer.
+
+## Final words
+
+I find it amazing that a laptop that is more than 12 years old can
+still hold about an hour of battery, its drive is still spinning,
+and that it overall works. DSL gave it a new life, and though it is
+tedious to use a cable to connect to the internet, it is a
+functioning UNIX system, with audio and a great mobile typewriter.
+Yes, the keyboard is small and uncomfortable, but this thing fits
+in any bag. Why, by 1990s standards, it would "fit in your
+pocket"!
+
+There is plenty of information out there on installing Linux on a
+Libretto, but at the time of writing this article, most of articles
+are about 7-10 years old. I hope that it can be useful for somebody
+who, like me, found this machine at the bottom of a drawer and
+might want to play with it a little, install a current Linux and
+maybe give it to your kids or use it as a second laptop.
+
+I wouldn't use it as a server, since it has little memory to run a
+server daemon, and keeping it on 24/7 would burn the machine. If
+you want a cheap server, go for a G4 Mac Mini and install the
+latest Debian there. The Libretto is a ultra portable laptop and,
+if yours still holds some battery charge, is a nice toy to write
+stuff on or browse the simple internet.
+
+DSL is highly customizable, and there is plenty of documentation
+out there. The default software is great, and searching the net you
+will find current software which is suitable for low memory
+devices. Here is
+[an article I wrote on the subject](http://weblog.topopardo.com/?p=1151)
+some years ago (in Spanish, but
+[Google translates it](http://translate.google.com/translate?hl=en&sl=es&tl=en&u=http://weblog.topopardo.com/?p=1151))
+so you will find yourself with a machine capable of reading and
+writing emails, displaying images, playing music, and more.
+
+The only sites it can't browse are those which use Flash or are
+heavy on JavaScript. Well, the modern web, Gmail, Facebook,
+Twitter... but if you try to use the mobile versions you might get
+a nice surprise. You can try to use the Firefox version bundled in
+DSL but I wouldn't recommend that, it's too slow.
+
+Feel free to contact me if there is any mistake on the tutorial or
+if you have some contribution, for example, a command to make it
+run with another Ethernet card, or if you managed to make the ACPI
+work.
+
+[![The Libretto running X](./Damn%20Small%20Linux%20on%20a%20Libretto%2050CT_files/libretto_x.thumb.jpg)](http://carlosfenollosa.com/computers/libretto/img/libretto_x.jpg)
+The Libretto running an X session
+Thanks for reading!
+
 
 * * * * *
 
-CC by-nc 2012-2013, Carlos Fenollosa. Contact:
+CC by-nc 2012, Carlos Fenollosa. Contact:
 [twitter](http://twitter.com/cfenollosa) or
-[mail](mailto:carlos.fenollosa@gmail.com). Last modified: Thu 13
-Dec 2012 12:20:25 CET
+[mail](mailto:carlos.fenollosa@gmail.com). Last modified: Wed 12
+Dec 2012 05:05:24 CET
 
-[Back to the computers section](http://carlosfenollosa.com/computers)
+[Back to the Computers section](http://carlosfenollosa.com/computers)
 
+![image](chrome-extension://nonjdcjchghhkdoolnlbekcfllmednbl/images/loading.gif)![image](http://carlosfenollosa.com/computers/libretto/img/libretto_closed.jpg)
 /body\>
 
 
