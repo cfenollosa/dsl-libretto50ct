@@ -324,7 +324,7 @@ or modprobe will fail
 
     modprobe opl3sa2 io=0x370 mss_io=0x530 mpu_io=0x330 irq=7 dma=1 dma2=0
 
-*Note: to access the Libretto BIOS, reboot or reset it, and press <ESC\> during or just after the memory check*
+*Note: to access the Libretto BIOS, reboot or reset it, and press &lt;ESC&gt; during or just after the memory check*
 
 Finally, the Pentium 75 CPU is able to play most mp3 files, but you
 will need to compile your own [mpg123](http://www.mpg123.de/). DSL
