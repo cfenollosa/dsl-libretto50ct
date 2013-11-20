@@ -19,6 +19,7 @@ comfortably.
 
 The Libretto, closed. It is a tiny machine, a wonderful piece of
 engineering
+
 About a month ago I found it inside a box at home, working
 perfectly, with a battery life of one hour—which is incredible for
 a 12+ year old machine— and
