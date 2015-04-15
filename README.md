@@ -331,7 +331,7 @@ is `links2` and I recommend `dillo` if you run X. It does not support CSS, but a
 and will be able to browse some websites.
 
 
-[![Look ma, no cables!](img/github.jpg)](https://github.com/carlesfe/dsl-libretto50ct/raw/master/img/github.jpg)
+[![Look ma, no cables!](img/github.thumb.jpg)](https://github.com/carlesfe/dsl-libretto50ct/raw/master/img/github.jpg)
 
 Look ma, no cables!
 
