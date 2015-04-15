@@ -269,7 +269,11 @@ login or a X desktop, depending on your setup.
 
 ## Network
 
-I bought a PCMCIA 16-bit 5V 3Com Ethernet adapter. This Libretto
+I have a PCMCIA 16-bit 5V 3Com Ethernet adapter and just recently
+acquired a wireless Orinoco Gold card, 16b 5V too, one of the few
+known to work with this Libretto model, albeit only in WEP-mode.
+
+This Libretto
 only accepts Type II PCMCIA, so it is very difficult to find a
 Linux 2.4 compatible, WPA-capable wifi card. Please let me know if
 you managed to get WPA wifi working!
@@ -288,6 +292,45 @@ The Knoppix core of DSL detected my Ethernet card, configured it
 with DHCP, and it talked instantly to my home router. Woohoo, it's
 on the Internet! I actually didn't need to do anything, compared to
 the hell I suffered with the Debian setup some years ago.
+
+### Wireless
+
+[![The 3Com card](img/orinoco.thumb.jpg)](https://github.com/carlesfe/dsl-libretto50ct/raw/master/img/orinoco.jpg)
+
+[![The 3Com card](img/orinoco_back.thumb.jpg)](https://github.com/carlesfe/dsl-libretto50ct/raw/master/img/orinoco_back.jpg)
+
+Again, thanks to the Knoppix core, the Libretto automatically detected the PCMCIA card, loaded the 
+`orinoco` kernel module, and the card was ready to use.
+
+First, prepare your wireless router to work with WEP. It is **highly discouraged** to do so, 
+because it is a big security hole. Fortunately I had a spare router that I can use only for the
+Libretto and will turn it off after playing with it.
+
+My recommended setup for the router is:
+
+- Hide the ESSID
+- Filter by MAC address
+- Use 802.11b with auto channel
+- Use a 128-bit ASCII WEP key
+
+I tuned `/opt/eth0.sh` to run the wireless commands. Add this just below the `#!/bin/bash` line:
+
+```bash
+iwconfig eth0 essid **ESSID_NAME**
+iwconfig eth0 key open s:**WEPKEY**
+iwconfig eth0 mode managed
+sleep 1
+```
+
+If you WEP key is hex and not ASCII, omit the `s:` part before it.
+
+Wait for a few seconds, and then `iwconfig` reports a correct Access Point, you're on the internet.
+Congratulations!
+
+Since the 50CT has very low specs, Firefox starts swapping like crazy. The best commandline browser
+is `links2` and use `dillo` if you run X. It does not support CSS, but at least you'll load the pages
+and will be able to browse some websites.
+
 
 ## Sound
 
