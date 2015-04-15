@@ -9,8 +9,7 @@ don't even want to write about it. But it booted and was able to
 run Vim, Links, and connect to the internet. Enough for a
 network-enabled typewriter.
 
-I got
-[Richard Stallman to sign mine](http://weblog.topopardo.com/?p=1017),
+I got Richard Stallman to sign mine
 but when I bought a regular laptop I stopped using it because,
 well, it is too old, and its keyboard is too tiny to type
 comfortably.
@@ -332,6 +331,10 @@ is `links2` and I recommend `dillo` if you run X. It does not support CSS, but a
 and will be able to browse some websites.
 
 
+[![Look ma, no cables!](img/github.jpg)](https://github.com/carlesfe/dsl-libretto50ct/raw/master/img/github.jpg)
+
+Look ma, no cables!
+
 ## Sound
 
 [This other tutorial](http://ta.twi.tudelft.nl/DV/Staff/Lemmens/libretto70ct.html)
@@ -488,6 +491,6 @@ Thanks for reading!
 
 * * * * *
 
-CC by-nc 2012, Carlos Fenollosa. Contact:
+CC by-nc 2012-2015, Carlos Fenollosa. Contact:
 [twitter](http://twitter.com/cfenollosa) or
 [mail](mailto:carlos.fenollosa@gmail.com)
