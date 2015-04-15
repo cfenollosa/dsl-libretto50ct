@@ -316,19 +316,19 @@ My recommended setup for the router is:
 I tuned `/opt/eth0.sh` to run the wireless commands. Add this just below the `#!/bin/bash` line:
 
 ```bash
-iwconfig eth0 essid **ESSID_NAME**
-iwconfig eth0 key open s:**WEPKEY**
+iwconfig eth0 essid ESSID_NAME
+iwconfig eth0 key open s:WEPKEY
 iwconfig eth0 mode managed
 sleep 1
 ```
 
 If you WEP key is hex and not ASCII, omit the `s:` part before it.
 
-Wait for a few seconds, and then `iwconfig` reports a correct Access Point, you're on the internet.
+Wait for a few seconds, and when `iwconfig` reports a correct Access Point, you're on the internet.
 Congratulations!
 
 Since the 50CT has very low specs, Firefox starts swapping like crazy. The best commandline browser
-is `links2` and use `dillo` if you run X. It does not support CSS, but at least you'll load the pages
+is `links2` and I recommend `dillo` if you run X. It does not support CSS, but at least you'll load the pages
 and will be able to browse some websites.
 
 
