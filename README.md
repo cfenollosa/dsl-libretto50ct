@@ -439,10 +439,10 @@ images, and that's a perfecly suitable task for that computer.
 
 ## Final words
 
-I find it amazing that a laptop that is more than 12 years old can
+I find it amazing that a laptop from early 2001 can
 still hold about an hour of battery, its drive is still spinning,
 and that it overall works. DSL gave it a new life, and though it is
-tedious to use a cable to connect to the internet, it is a
+tedious to use a cable or WEP to connect to the internet, it is a
 functioning UNIX system, with audio and a great mobile typewriter.
 Yes, the keyboard is small and uncomfortable, but this thing fits
 in any bag. Why, by 1990s standards, it would "fit in your
