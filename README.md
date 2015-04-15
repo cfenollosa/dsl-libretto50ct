@@ -295,9 +295,9 @@ the hell I suffered with the Debian setup some years ago.
 
 ### Wireless
 
-[![The 3Com card](img/orinoco.thumb.jpg)](https://github.com/carlesfe/dsl-libretto50ct/raw/master/img/orinoco.jpg)
+[![The Orinoco card](img/orinoco.thumb.jpg)](https://github.com/carlesfe/dsl-libretto50ct/raw/master/img/orinoco.jpg)
 
-[![The 3Com card](img/orinoco_back.thumb.jpg)](https://github.com/carlesfe/dsl-libretto50ct/raw/master/img/orinoco_back.jpg)
+[![The Orinoco card](img/orinoco_back.thumb.jpg)](https://github.com/carlesfe/dsl-libretto50ct/raw/master/img/orinoco_back.jpg)
 
 Again, thanks to the Knoppix core, the Libretto automatically detected the PCMCIA card, loaded the 
 `orinoco` kernel module, and the card was ready to use.
